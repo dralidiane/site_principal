@@ -16,7 +16,7 @@ interface AdvancedProceduresProps {
 const advancedProcedures = [
   {
     icon: Zap,
-    title: 'Laser de CO₂ Ultrapulsado',
+    title: 'Laser de CO₂ Ultrapulsado & Botox',
     subtitle: 'Pele Nova, Textura Renovada',
     benefit: 'Melhora rugas, manchas e textura com estímulo profundo de colágeno.',
     transformation: 'Pele lisa, firme e iluminada com segurança e precisão.',
