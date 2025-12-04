@@ -1,17 +1,16 @@
-import { Zap, Cpu, Syringe } from 'lucide-react';
+import { Zap, Cpu, Syringe, Radio } from 'lucide-react';
 import laserCo2Img from '../assets/logos/laser-co2.webp';
 import preenchimentoLabialImg from '../assets/logos/preenchimento-labial.webp';
 import radiofrequenciaImg from '../assets/logos/radiofrequencia.webp';
 import fiosPdoImg from '../assets/logos/fios-pdo.webp';
+import ultrassomMicrofocadoImg from '../assets/logos/ultrassom-microfocado.webp';
 
 interface AdvancedProceduresProps {
   onLeadCapture: (service?: string) => void;
 }
 
-// Importar imagens quando disponíveis (descomente quando adicionar as imagens)
-// import blefaroplastiaImg from '../assets/procedimentos/blefaroplastia.jpg';
-// import radiofrequenciaImg from '../assets/procedimentos/radiofrequencia.jpg';
-// import fiosPdoImg from '../assets/procedimentos/fios-pdo.jpg';
+
+
 
 const advancedProcedures = [
   {
@@ -38,11 +37,21 @@ const advancedProcedures = [
     icon: Cpu,
     title: 'Radiofrequência Microagulhada Robótica',
     subtitle: 'Regeneração de Alta Performance',
-    benefit: 'Combina tecnologia e precisão para tratar flacidez e cicatrizes.',
+    benefit: 'Combina tecnologia e precisão para tratar flacidez, Melasma, cicatrizes de acne e no rejuvenescimento facial',
     transformation: 'Pele mais firme, poros reduzidos e textura uniforme.',
     cta: 'Quero revitalizar minha pele',
     ctaId: 'radiofrequencia',
     image: radiofrequenciaImg // Imagem da Radiofrequência Microagulhada Robótica
+  },
+  {
+    icon: Radio,
+    title: 'Ultrassom Microfocado',
+    subtitle: 'Lifting Não Invasivo de Alta Precisão',
+    benefit: 'Tecnologia de ultrassom que atinge camadas profundas da pele, estimulando a produção de colágeno e elastina.',
+    transformation: 'Efeito lifting natural, redução de flacidez e contornos faciais mais definidos sem cirurgia.',
+    cta: 'Quero lifting sem cortes',
+    ctaId: 'ultrassom-microfocado',
+    image: ultrassomMicrofocadoImg // Imagem do Ultrassom Microfocado
   },
   {
     icon: Syringe,
@@ -128,13 +137,14 @@ export default function AdvancedProcedures({ onLeadCapture }: AdvancedProcedures
                 </div>
               </div>
 
+
               <div className={`relative ${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''} order-2 lg:order-none`}>
-                <div className="aspect-[4/5] bg-gradient-to-br from-[#f3e1db] to-[#d9b6af] rounded-sm shadow-xl overflow-hidden">
+                <div className={`aspect-[4/5] ${procedure.ctaId === 'radiofrequencia' ? 'bg-white' : 'bg-gradient-to-br from-[#f3e1db] to-[#d9b6af]'} rounded-sm ${procedure.ctaId === 'radiofrequencia' ? '' : 'shadow-xl'} overflow-hidden`}>
                   {procedure.image ? (
                     <img
                       src={procedure.image}
                       alt={`Resultado do procedimento ${procedure.title}`}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full ${procedure.ctaId === 'radiofrequencia' ? 'object-contain' : 'object-cover'}`}
                       loading="lazy"
                     />
                   ) : (
@@ -147,6 +157,7 @@ export default function AdvancedProcedures({ onLeadCapture }: AdvancedProcedures
                   )}
                 </div>
               </div>
+
 
               {/* Botão CTA - Abaixo da imagem no mobile (oculto no desktop) */}
               <div className="flex lg:hidden justify-center order-3">
